@@ -8,9 +8,9 @@ import java.io.PrintStream;
 public class Task1Test {
     @Test
     void inputNumberIsEqualTo6Test()  {
-        long number=6;
+        int number=6;
         String expected="";
-        ByteArrayInputStream in=new ByteArrayInputStream(Long.toString(number).getBytes());
+        ByteArrayInputStream in=new ByteArrayInputStream(Integer.toString(number).getBytes());
         System.setIn(in);
         ByteArrayOutputStream out=new ByteArrayOutputStream();
         PrintStream printStream=new PrintStream(out);
@@ -28,9 +28,9 @@ public class Task1Test {
     }
     @Test
     void inputNumberIsEqualTo7Test()    {
-        long number=7;
+        int number=7;
         String expected="";
-        ByteArrayInputStream in=new ByteArrayInputStream(Long.toString(number).getBytes());
+        ByteArrayInputStream in=new ByteArrayInputStream(Integer.toString(number).getBytes());
         System.setIn(in);
         ByteArrayOutputStream out=new ByteArrayOutputStream();
         PrintStream printStream=new PrintStream(out);
@@ -48,9 +48,9 @@ public class Task1Test {
     }
     @Test
     void inputNumberIsEqualTo8Test()    {
-        long number=8;
+        int number=8;
         String expected="Привет";
-        ByteArrayInputStream in=new ByteArrayInputStream(Long.toString(number).getBytes());
+        ByteArrayInputStream in=new ByteArrayInputStream(Integer.toString(number).getBytes());
         System.setIn(in);
         ByteArrayOutputStream out=new ByteArrayOutputStream();
         PrintStream printStream=new PrintStream(out);
@@ -108,9 +108,49 @@ public class Task1Test {
     }
     @Test
     void inputNegativeNumberTest()  {
-        long number=-7;
+        int number=-7;
         String expected="";
-        ByteArrayInputStream in=new ByteArrayInputStream(Long.toString(number).getBytes());
+        ByteArrayInputStream in=new ByteArrayInputStream(Integer.toString(number).getBytes());
+        System.setIn(in);
+        ByteArrayOutputStream out=new ByteArrayOutputStream();
+        PrintStream printStream=new PrintStream(out);
+        System.setOut(printStream);
+        try {
+            Task1.main(new String[]{});
+            printStream.flush();
+            String actual=out.toString().trim();
+            Assert.assertEquals(actual,expected);
+        }
+        finally {
+            System.setOut(System.out);
+            System.setIn(System.in);
+        }
+    }
+    @Test
+    void inputDoubleNumberGreaterThan7Test()    {
+        double number=7.1;
+        String expected="Привет";
+        ByteArrayInputStream in=new ByteArrayInputStream(Double.toString(number).getBytes());
+        System.setIn(in);
+        ByteArrayOutputStream out=new ByteArrayOutputStream();
+        PrintStream printStream=new PrintStream(out);
+        System.setOut(printStream);
+        try {
+            Task1.main(new String[]{});
+            printStream.flush();
+            String actual=out.toString().trim();
+            Assert.assertEquals(actual,expected);
+        }
+        finally {
+            System.setOut(System.out);
+            System.setIn(System.in);
+        }
+    }
+    @Test
+    void inputDoubleNumberEqualTo7Test()    {
+        double number=7.0;
+        String expected="";
+        ByteArrayInputStream in=new ByteArrayInputStream(Double.toString(number).getBytes());
         System.setIn(in);
         ByteArrayOutputStream out=new ByteArrayOutputStream();
         PrintStream printStream=new PrintStream(out);
