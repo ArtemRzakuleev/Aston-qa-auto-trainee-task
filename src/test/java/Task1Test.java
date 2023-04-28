@@ -66,5 +66,65 @@ public class Task1Test {
             System.setIn(System.in);
         }
     }
+    @Test
+    void inputIsStringTest()    {
+        String input="abc";
+        String expected="Необходимо вводить только числа";
+        ByteArrayInputStream in=new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        ByteArrayOutputStream out=new ByteArrayOutputStream();
+        PrintStream printStream=new PrintStream(out);
+        System.setOut(printStream);
+        try {
+            Task1.main(new String[]{});
+            printStream.flush();
+            String actual=out.toString().trim();
+            Assert.assertEquals(actual,expected);
+        }
+        finally {
+            System.setOut(System.out);
+            System.setIn(System.in);
+        }
+    }
+    @Test
+    void inputNumberWithSpaceBeforeTest()   {
+        String input=" 8";
+        String expected="Привет";
+        ByteArrayInputStream in=new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        ByteArrayOutputStream out=new ByteArrayOutputStream();
+        PrintStream printStream=new PrintStream(out);
+        System.setOut(printStream);
+        try {
+            Task1.main(new String[]{});
+            printStream.flush();
+            String actual=out.toString().trim();
+            Assert.assertEquals(actual,expected);
+        }
+        finally {
+            System.setOut(System.out);
+            System.setIn(System.in);
+        }
+    }
+    @Test
+    void inputNegativeNumberTest()  {
+        long number=-7;
+        String expected="";
+        ByteArrayInputStream in=new ByteArrayInputStream(Long.toString(number).getBytes());
+        System.setIn(in);
+        ByteArrayOutputStream out=new ByteArrayOutputStream();
+        PrintStream printStream=new PrintStream(out);
+        System.setOut(printStream);
+        try {
+            Task1.main(new String[]{});
+            printStream.flush();
+            String actual=out.toString().trim();
+            Assert.assertEquals(actual,expected);
+        }
+        finally {
+            System.setOut(System.out);
+            System.setIn(System.in);
+        }
+    }
 
 }
